@@ -1,0 +1,167 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2009 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
+# Date created = 13:47:13  January 18, 2016
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		BCD_rus_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY FLEX10KE
+set_global_assignment -name DEVICE "EPF10K200SRC240-3"
+set_global_assignment -name TOP_LEVEL_ENTITY BCD_rus
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:47:13  JANUARY 18, 2016"
+set_global_assignment -name LAST_QUARTUS_VERSION "9.0 SP1"
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name FLEX10K_DEVICE_IO_STANDARD LVTTL/LVCMOS
+set_location_assignment PIN_211 -to clk80MHz
+set_location_assignment PIN_71 -to dir_RX
+set_location_assignment PIN_70 -to dir_TX
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus_18012016/BCD_rus.dpf"
+set_location_assignment PIN_34 -to HO1
+set_location_assignment PIN_38 -to HO2
+set_location_assignment PIN_43 -to HO3
+set_location_assignment PIN_36 -to IM1_0
+set_location_assignment PIN_35 -to IM1_1
+set_location_assignment PIN_41 -to IM2_0
+set_location_assignment PIN_39 -to IM2_1
+set_location_assignment PIN_45 -to IM3_0
+set_location_assignment PIN_44 -to IM3_1
+set_location_assignment PIN_68 -to RS485_RX
+set_location_assignment PIN_67 -to RS485_TX
+set_global_assignment -name AUTO_RESTART_CONFIGURATION OFF
+set_global_assignment -name FLEX10K_CONFIGURATION_DEVICE EPC4
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus_19012016/BCD_rus.dpf"
+set_location_assignment PIN_120 -to control_TX
+set_location_assignment PIN_118 -to ack
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/MSB_rus_25012016/BCD_rus.dpf"
+set_location_assignment PIN_119 -to test
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/MSB_rus_26012016/BCD_rus.dpf"
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/MSB_rus_27012016/BCD_rus.dpf"
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/MSB_rus_05022016/BCD_rus.dpf"
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/MSB_rus_08022016/BCD_rus.dpf"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/11022016/BCD_rus.dpf"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name FMAX_REQUIREMENT "80 MHz" -section_id clk80MHz
+set_instance_assignment -name CLOCK_SETTINGS clk80MHz -to clk80MHz
+set_global_assignment -name BASED_ON_CLOCK_SETTINGS clk80MHz -section_id 5MHz
+set_global_assignment -name MULTIPLY_BASE_CLOCK_PERIOD_BY 16 -section_id 5MHz
+set_global_assignment -name BASED_ON_CLOCK_SETTINGS clk80MHz -section_id 40MHz
+set_global_assignment -name MULTIPLY_BASE_CLOCK_PERIOD_BY 2 -section_id 40MHz
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/16022016/BCD_rus.dpf"
+set_global_assignment -name BASED_ON_CLOCK_SETTINGS clk80MHz -section_id 13MHz
+set_global_assignment -name MULTIPLY_BASE_CLOCK_PERIOD_BY 6 -section_id 13MHz
+set_global_assignment -name BASED_ON_CLOCK_SETTINGS clk80MHz -section_id 20MHz
+set_global_assignment -name MULTIPLY_BASE_CLOCK_PERIOD_BY 4 -section_id 20MHz
+set_instance_assignment -name CLOCK_SETTINGS 20MHz -to "cntclkDiv:inst27|lpm_counter:clkcnt1_rtl_0|alt_counter_f10ke:wysi_counter|counter_cell[1]"
+set_global_assignment -name BASED_ON_CLOCK_SETTINGS clk80MHz -section_id 10MHz
+set_global_assignment -name MULTIPLY_BASE_CLOCK_PERIOD_BY 8 -section_id 10MHz
+set_instance_assignment -name CLOCK_SETTINGS 10MHz -to "cntclkDiv:inst27|lpm_counter:clkcnt1_rtl_0|alt_counter_f10ke:wysi_counter|counter_cell[2]"
+set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name ECO_OPTIMIZE_TIMING OFF
+set_global_assignment -name ROUTER_TIMING_OPTIMIZATION_LEVEL NORMAL
+set_global_assignment -name FINAL_PLACEMENT_OPTIMIZATION AUTOMATICALLY
+set_global_assignment -name FITTER_AGGRESSIVE_ROUTABILITY_OPTIMIZATION AUTOMATICALLY
+set_global_assignment -name AUTO_GLOBAL_MEMORY_CONTROLS OFF
+set_global_assignment -name OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING OFF
+set_global_assignment -name FLEX10K_OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/01032016/BCD_rus.dpf"
+set_instance_assignment -name CLOCK_SETTINGS 5MHz -to "cntclkDiv:inst27|lpm_counter:clkcnt1_rtl_0|alt_counter_f10ke:wysi_counter|counter_cell[3]"
+set_instance_assignment -name CLOCK_SETTINGS 40MHz -to "cntclkDiv:inst27|lpm_counter:clkcnt1_rtl_0|alt_counter_f10ke:wysi_counter|counter_cell[0]"
+set_instance_assignment -name CLOCK_SETTINGS 13MHz -to "clk5MHz_clk13MHz:inst|clkOUT"
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/14032016/BCD_rus.dpf"
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/17032016/BCD_rus.dpf"
+set_global_assignment -name VERILOG_FILE clk5MHz_clk13MHz.v
+set_global_assignment -name VERILOG_FILE receiver_inform.v
+set_global_assignment -name BDF_FILE BCD_rus.bdf
+set_global_assignment -name VERILOG_FILE bits_18_words_97_gen.v
+set_global_assignment -name VERILOG_FILE address_generator.v
+set_global_assignment -name VERILOG_FILE UART_TX.v
+set_global_assignment -name VHDL_FILE UartToRS.vhd
+set_global_assignment -name QIP_FILE parityBit.qip
+set_global_assignment -name QIP_FILE constant5500.qip
+set_global_assignment -name QIP_FILE mem256.qip
+set_global_assignment -name QIP_FILE mux4_1.qip
+set_global_assignment -name QIP_FILE mux3_1.qip
+set_global_assignment -name QIP_FILE muxDataOrZeros.qip
+set_global_assignment -name QIP_FILE muxRS.qip
+set_global_assignment -name VERILOG_FILE TX_without_req.v
+set_global_assignment -name QIP_FILE mem_97.qip
+set_global_assignment -name QIP_FILE mem100.qip
+set_global_assignment -name VERILOG_FILE cntWr.v
+set_global_assignment -name QIP_FILE lpm_constant0.qip
+set_global_assignment -name MIF_FILE ghg.mif
+set_global_assignment -name VERILOG_FILE req_RS485.v
+set_global_assignment -name VERILOG_FILE Reset.v
+set_global_assignment -name VERILOG_FILE reader.v
+set_global_assignment -name QIP_FILE MUXmem.qip
+set_global_assignment -name VERILOG_FILE TXuart.v
+set_global_assignment -name VERILOG_FILE split2.v
+set_global_assignment -name VERILOG_FILE cntclkDiv.v
+set_global_assignment -name QIP_FILE lpm_ff0.qip
+set_global_assignment -name QIP_FILE lpm_ff1.qip
+set_global_assignment -name QIP_FILE lpm_ff2.qip
+set_global_assignment -name QIP_FILE ../../tresh/split_Test/lpm_counter1.qip
+set_global_assignment -name QIP_FILE ../../tresh/split_Test/lpm_mux0.qip
+set_global_assignment -name QIP_FILE ../../tresh/split_Test/lpm_mux1.qip
+set_global_assignment -name QIP_FILE lpm_const1.qip
+set_global_assignment -name QIP_FILE lpm_const2.qip
+set_global_assignment -name QIP_FILE lpm_counter2.qip
+set_global_assignment -name QIP_FILE lpm_mux33.qip
+set_global_assignment -name QIP_FILE lpm_constant333.qip
+set_global_assignment -name QIP_FILE lpm_xor0.qip
+set_global_assignment -name QIP_FILE RAM_BDCC.qip
+set_global_assignment -name VERILOG_FILE wrmem.v
+set_global_assignment -name QIP_FILE lpm_compare0.qip
+set_global_assignment -name VERILOG_FILE rdmem.v
+set_global_assignment -name MIF_FILE mem_bdcc.mif
+set_global_assignment -name QIP_FILE lpm_constant6.qip
+set_global_assignment -name QIP_FILE DATAfromBDCC.qip
+set_global_assignment -name QIP_FILE lpm_counter0.qip
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/21032016/BCD_rus.dpf"
+set_global_assignment -name VERILOG_FILE recBDCC.v
+set_global_assignment -name QIP_FILE ../../BDCC_14012016/dReg.qip
+set_global_assignment -name VERILOG_FILE recBUFDAT.v
+set_global_assignment -name QIP_FILE lpm_shiftreg1.qip
+set_global_assignment -name AUTO_PACKED_REGISTERS OFF
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE ALL_EDGE
+set_global_assignment -name QIP_FILE lpm_xor1.qip
+set_global_assignment -name MISC_FILE "C:/Projects/MSB_rus/08042016/BCD_rus.dpf"

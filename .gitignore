@@ -1,0 +1,15 @@
+/simulation/
+/incremental_db/
+/db/
+/BCD_rus.asm.rpt
+/BCD_rus.done
+/BCD_rus.eda.rpt
+/BCD_rus.fit.rpt
+/BCD_rus.flow.rpt
+/BCD_rus.map.rpt
+/BCD_rus.map.smsg
+/BCD_rus.tan.rpt
+/BCD_rus_nativelink_simulation.rpt
+/serv_req_info.txt
+*.qws
+*.v.bak

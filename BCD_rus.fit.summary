@@ -1,0 +1,11 @@
+Fitter Status : Successful - Thu Dec 08 16:00:48 2016
+Quartus II Version : 9.0 Build 184 04/29/2009 SP 1 SJ Web Edition
+Revision Name : BCD_rus
+Top-level Entity Name : BCD_rus
+Family : FLEX10KE
+Device : EPF10K200SRC240-3
+Timing Models : Final
+Total logic elements : 1,418 / 9,984 ( 14 % )
+Total pins : 18 / 182 ( 10 % )
+Total memory bits : 14,688 / 98,304 ( 15 % )
+Total PLLs : 0

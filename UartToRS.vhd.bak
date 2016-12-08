@@ -1,0 +1,105 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+use IEEE.std_logic_unsigned.all;
+
+--  Entity Declaration
+
+ENTITY UartToRS IS
+    -- {{ALTERA_IO_BEGIN}} DO NOT REMOVE THIS LINE!
+    PORT
+    (
+    -------------------------------ТАКТИРОВАНИЕ МОДУЛЯ-----------------------------------
+        clk     :   in STD_LOGIC;                           -- 80.000.000 Hz
+--------------------------------ПРИЁМНИК ДАННЫХ-------------------------------------
+        RS485_RX        : in std_logic;                     -- Здесь
+        data_out: out std_logic_vector (7 downto 0);        -- Магические
+        RX_VALID: out std_logic                          -- Сигналы
+---------------------------------ПРИЁМОПЕРЕДАТЧИК------------------------------------
+        --inDreq  : in STD_LOGIC;                             -- сигнал нового запроса на шинах
+       -- reqBus: in STD_LOGIC_VECTOR (0 to 9);             -- запросные шины
+       -- RS485_TX: out STD_LOGIC;                            -- последовательный запрос контроллеру
+        --dir_TX  : out STD_LOGIC;                            -- сигналы направления
+        --dir_RX  : out STD_LOGIC;                             -- приёма и передачи соответственно
+        --cnt_ram : out integer range 0 to 880
+    );
+    -- {{ALTERA_IO_END}} DO NOT REMOVE THIS LINE!
+    
+END UartToRS;
+
+
+--  Architecture Body
+
+ARCHITECTURE UartToRS_architecture OF UartToRS IS
+
+signal rx_act   : std_logic;                                -- вспомогательный сигнал разрешения приёма
+
+signal clk5MHz  : STD_LOGIC;                                -- внутренняя частота 5 МГц для контроллеров RS-485
+signal TXenable : STD_LOGIC;                                -- вспомогательный сигнал разрешения передачи
+
+BEGIN
+process (clk, clk5MHz)
+----------------------------------------------
+----- ПЕРЕМЕННЫЕ ДЛЯ ПРИЁМНИКА ПО UART  ------
+----------------------------------------------
+variable place  : integer range 0 to 8 := 0;                -- номер бита информации в переменной
+variable data   : std_logic_vector (7 downto 0);            -- переменная с ответом
+variable strtcnt: integer range 0 to 8 := 0;                -- счётчик стартового бита
+variable stepcnt: integer range 0 to 16 := 0;               -- счётчик тактов между битами
+variable newcnt : integer range 0 to 10 := 0;
+variable VALID	: std_logic;
+----------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+begin
+--RX_VALID <= VALID;                                                    --
+----------------------------------------------
+----- ЛОГИКА ПРИЁМНИКА. МАГИЯ ПЕРЕПИСАНА  ----
+----------------------------------------------
+if rising_edge(clk) then
+RX_VALID <= VALID; 
+--    RX_VALID <= '0';                                        -- Передача по умолчанию считается некорректной
+	if(VALID = '1') then
+		newcnt := newcnt + 1;
+		if(newcnt = 10) then
+			VALID := '0';
+			newcnt := 0;
+		end if;
+	end if;
+    if (RS485_RX = '0') and (rx_act = '0') then                 -- Ловим стартовый бит
+		
+        strtcnt := strtcnt + 1;                             -- Отсчитаем середину стартового бита
+        --strcnt==4 для 40 мгц
+        if (strtcnt = 2) then                               --
+            rx_act <= '1';                                  -- Будем считать передачу активной
+            strtcnt := 0;                                   -- и обнулим счётчик для следующей передачи
+        end if;                                             --
+    end if;
+    if (rx_act = '1') then                                  -- Если передача считается активной
+        stepcnt := stepcnt + 1;                             -- начнём считать такты для каждого бита
+         --stepcnt==8 для 40 мгц
+        if (stepcnt = 4)then                               -- полезной информации
+            if (place = 8) then                             -- в конце байта, если вышли за пределы переменной
+                if (RS485_RX = '1') then                    -- если нашли стоп-бит
+                    rx_act <= '0';                          -- будем считать передачу законченной
+                    VALID := '1';                        -- будем считать передачу корректной
+                    data_out <= data;                       -- отправим на шину собранную переменную
+                    place := 0;                             -- обнулим счётчики
+                    stepcnt := 0;                           -- информации и тактов
+                else                                        -- в противном случае
+                    rx_act <= '0';                          -- закончим передачу
+                    place := 0;                             -- обнулим счётчики
+                    stepcnt := 0;                           -- и не станем отправлять
+                end if;                                     -- никаких сигналов более
+            else                                            -- а если у нас не конец передачи, то
+                data(place) := RS485_RX;                    -- запишем в переменную сигнал со входа
+                place := place + 1;                         -- инкрементируем место в переменной
+                stepcnt := 0;                               -- сбросим счётчик тактов
+            end if;                                         -- продолжим в том же духе
+        end if;                                             --
+    end if;
+end if;
+
+end process;
+END UartToRS_architecture;
